@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginContrller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -16,5 +17,9 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::view('login','layouts.app');
+})->name('welcome');
+// Route::view('/login','layouts.app')->name('login');
+Route::get('/login', [LoginContrller::class, 'viewlogin'])->name('login');
+Route::get('/register', [LoginContrller::class, 'viewregister'])->name('register');
+
+// Route::view('/register', 'layouts.app')->name('register');

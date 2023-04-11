@@ -1,73 +1,44 @@
+<div>
+    <div class="row">
+        <div class="col-12">
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                {{ session('message') }}
+                </div>
+            @endif
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login UI</title>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                {{ session('error') }}
+                </div>
+            @endif
+        </div>
+    </div>
+<form>
+        <div class="col-12">
+            <div class="form-group">
+                <label>User Name :</label>
+                <input type="text" wire:model="name_login" class="form-control">
+                @error('name_login') <span class="text-danger error">{{ $message }}</span>@enderror
+            </div>
+        </div>
 
-  
+        <div class="col-12">
+            <div class="form-group">
+                <label>Password :</label>
+                <input type="password" wire:model="password_login" class="form-control">
+                @error('password_login') <span class="text-danger error">{{ $message }}</span>@enderror
+            </div>
+        </div>
 
-	
-	<div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="?action=signup" method="post">
-			<h1>Create Account</h1>
-			<div class="social-container">
-				<a href="#" class="social"><ion-icon name="logo-facebook"></ion-icon></a>
-				<a href="#" class="social"><ion-icon name="logo-google"></ion-icon></a>
-				<a href="#" class="social"><ion-icon name="logo-github"></ion-icon></a>
-			</div>
-			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" name="name" />
-			<input type="email" placeholder="Email" name="email" />
-			<input type="password" placeholder="Password"name="password" />
-			<input type="password" placeholder="Confirm Password" name="confirm_password" />
+        <div class="col-12 text-center">
 
-			<button>Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form  wire:submit.prevent='login' >
-			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="" class="social"><ion-icon name="logo-facebook"></ion-icon></a>
-				<a href="#" class="social"><ion-icon name="logo-google"></ion-icon></a>
-				<a href="#" class="social"><ion-icon name="logo-github"></ion-icon></a>
-			</div>
-			<span>or use your account</span>
-            
-			<input type="text" placeholder="Enter Emaill" wire:mode="email" name="email"/>
-			<input type="password" placeholder="Password" name="password" wire:mode="password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div>
-		</div>
-	</div>
-</div>
-<script>
-  const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+            <button class="btn btn-block login-btn mb-4" wire:click.prevent="login">Login</button>
+        </div>
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
-</script>
+        <p class="login-card-footer-text">
+            Don't have an account
+            <a class="btn btn-outline-dark text-reset" wire:click.prevent="register">Register</a>
+        </p>
+</form>
