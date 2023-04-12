@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\LoginContrller;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\checklogin;
+use App\Http\Middleware\checklogin_;
+use App\Http\Middleware\CheckLoginEmployee;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +19,28 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+// Route::view('/login','layouts.app')->name('login');
+Route::get('/register', [LoginContrller::class, 'viewregister'])->name('register');
+Route::middleware([checklogin_::class])->group(function () {
+
+    Route::get('/login', [LoginContrller::class, 'viewlogin'])->name('login');
 });
-Route::view('login','layouts.app');
+Route::get('/logout', [LoginContrller::class, 'logout'])->name('logout');
+Route::get('/login1', [LoginContrller::class, 'viewlogin'])->name('login1');
+
+
+
+Route::middleware([checklogin::class])->group(function () {
+    Route::get('/admin', function () {
+       return view('admin.index');
+    })->name('admin.index');
+});
+
+
+Route::middleware([CheckLoginEmployee::class])->group(function () {
+    Route::get('/employee', [UserController::class, 'index'])->name('employee.index');
+});
+
+
+
