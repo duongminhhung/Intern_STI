@@ -1,0 +1,75 @@
+[1mdiff --git a/resources/views/livewire/form-login.blade.php b/resources/views/livewire/form-login.blade.php[m
+[1mindex f37349e..15eae04 100644[m
+[1m--- a/resources/views/livewire/form-login.blade.php[m
+[1m+++ b/resources/views/livewire/form-login.blade.php[m
+[36m@@ -9,57 +9,26 @@[m
+   [m
+ [m
+ 	[m
+[31m-	<div class="container" id="container">[m
+[31m-	<div class="form-container sign-up-container">[m
+[31m-		<form action="?action=signup" method="post">[m
+[31m-			<h1>Create Account</h1>[m
+[31m-			<div class="social-container">[m
+[31m-				<a href="#" class="social"><ion-icon name="logo-facebook"></ion-icon></a>[m
+[31m-				<a href="#" class="social"><ion-icon name="logo-google"></ion-icon></a>[m
+[31m-				<a href="#" class="social"><ion-icon name="logo-github"></ion-icon></a>[m
+[31m-			</div>[m
+[31m-			<span>or use your email for registration</span>[m
+[31m-			<input type="text" placeholder="Name" name="name" />[m
+[31m-			<input type="email" placeholder="Email" name="email" />[m
+[31m-			<input type="password" placeholder="Password"name="password" />[m
+[31m-			<input type="password" placeholder="Confirm Password" name="confirm_password" />[m
+[31m-[m
+[31m-			<button>Sign Up</button>[m
+[31m-		</form>[m
+[31m-	</div>[m
+[32m+[m[41m	[m
+ 	<div class="form-container sign-in-container">[m
+[31m-		<form  wire:submit.prevent='login' >[m
+ 			<h1>Sign in</h1>[m
+[31m-			<div class="social-container">[m
+[31m-				<a href="" class="social"><ion-icon name="logo-facebook"></ion-icon></a>[m
+[31m-				<a href="#" class="social"><ion-icon name="logo-google"></ion-icon></a>[m
+[31m-				<a href="#" class="social"><ion-icon name="logo-github"></ion-icon></a>[m
+[31m-			</div>[m
+[31m-			<span>or use your account</span>[m
+[32m+[m[41m			[m
+             [m
+[31m-			<input type="text" placeholder="Enter Emaill" wire:mode="email" name="email"/>[m
+[32m+[m			[32m<input type="text" wire:model="email" class="form-control">[m
+[32m+[m
+[32m+[m			[32m@error('email')[m
+[32m+[m[32m                <p class="text-danger" style="font-size: 12.5px;">{{ $message }}</p>[m
+[32m+[m[32m            @enderror[m
+ 			<input type="password" placeholder="Password" name="password" wire:mode="password" />[m
+[31m-			<a href="#">Forgot your password?</a>[m
+[31m-			<button>Sign In</button>[m
+[32m+[m			[32m@error('password')[m
+[32m+[m[32m                <p class="text-danger" style="font-size: 12.5px;">{{ $message }}</p>[m
+[32m+[m[32m            @enderror[m
+[32m+[m			[32m<a>Sign In</button>[m
+ 		</form>[m
+ 	</div>[m
+[31m-	<div class="overlay-container">[m
+[31m-		<div class="overlay">[m
+[31m-			<div class="overlay-panel overlay-left">[m
+[31m-				<h1>Welcome Back!</h1>[m
+[31m-				<p>To keep connected with us please login with your personal info</p>[m
+[31m-				<button class="ghost" id="signIn">Sign In</button>[m
+[31m-			</div>[m
+[31m-			<div class="overlay-panel overlay-right">[m
+[31m-				<h1>Hello, Friend!</h1>[m
+[31m-				<p>Enter your personal details and start journey with us</p>[m
+[31m-				<button class="ghost" id="signUp">Sign Up</button>[m
+[31m-			</div>[m
+[31m-		</div>[m
+[31m-	</div>[m
+[31m-</div>[m
+[32m+[m[41m	[m
+ <script>[m
+[31m-  const signUpButton = document.getElementById('signUp');[m
+[32m+[m[32mconst signUpButton = document.getElementById('signUp');[m
+ const signInButton = document.getElementById('signIn');[m
+ const container = document.getElementById('container');[m
+ [m
