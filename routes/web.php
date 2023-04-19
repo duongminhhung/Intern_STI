@@ -23,7 +23,6 @@ use App\Http\Middleware\CheckLoginEmployee;
 // Route::view('/login','layouts.app')->name('login');
 Route::get('/register', [LoginContrller::class, 'viewregister'])->name('register');
 Route::middleware([checklogin_::class])->group(function () {
-
     Route::get('/login', [LoginContrller::class, 'viewlogin'])->name('login');
 });
 Route::get('/logout', [LoginContrller::class, 'logout'])->name('logout');
@@ -35,6 +34,11 @@ Route::middleware([checklogin::class])->group(function () {
     Route::get('/admin', function () {
        return view('admin.index');
     })->name('admin.index');
+    Route::post('/admin/import', [UserController::class, 'import'])->name('admin.import');
+    Route::get('/admin/add', [UserController::class, 'add'])->name('admin.add');
+    Route::post('/admin/add', [UserController::class, 'insert'])->name('admin.insert');
+    Route::get('/admin/update/{id}', [UserController::class, 'update'])->name('admin.update');
+    Route::get('/admin/export/', [UserController::class, 'export'])->name('admin.export');
 });
 
 

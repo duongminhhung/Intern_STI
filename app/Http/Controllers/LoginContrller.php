@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
+// use Session;
 class LoginContrller extends Controller
 {
     public function viewlogin()

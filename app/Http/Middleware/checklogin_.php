@@ -19,8 +19,6 @@ class checklogin_
             return redirect('/admin');
            }else{
                return redirect()->route('login1');
-
-
            }
     }
 }

@@ -58,19 +58,7 @@ class FormLogin extends Component
         $password_login = $this->password_login;
 
         $password_login = md5($password_login);
-
-        // dd($name_login);
-        // dd($password_login);
-        // dd(Auth::attempt(['name' => $name_login, 'password' => $password_login,])->toSql());
-    //     if(\Auth::attempt(array('name' => $name_login, 'password' => $password_login))){
-    //         // session()->flash('message', "You are Login successful.");
-    //         dd(1);
-    // }else{
-    //     // session()->flash('error', 'email and password are wrong.');
-    //     dd(2);
-    // }
-    // dd(\Auth::attempt(array('name' => $name_login, 'password' => $password_login)));
-        
+            // dd($password_login);
         $users = DB::table('users')
         ->where([
             ['name', '=', $name_login],
